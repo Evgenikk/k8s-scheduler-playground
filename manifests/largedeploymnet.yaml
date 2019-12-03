@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: largepods
+  labels:
+    app: largepods
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: largepods
+  template:
+    metadata:
+      labels:
+        app: largepods
+    spec:
+      containers:
+      - name: largepods
+        image: alpine:3.10.3
+        command: ["sleep", "4000"]
+      tolerations:
+        - key: size
+          operator: Equal
+          value: large
+          effect: NoExecute
+      affinity:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+              - matchExpressions:
+                - key: size
+                  operator: In
+                  values:
+                  - large
+                  - medium

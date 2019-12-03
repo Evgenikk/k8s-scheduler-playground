@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workload1
+  labels:
+    app: workload
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: workload
+  template:
+    metadata:
+      labels:
+        app: workload
+    spec:
+      containers:
+      - name: workload
+        image: alpine:3.10.3
+        command: ["sleep", "4000"]
