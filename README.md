@@ -24,9 +24,7 @@
 * podAntiAffinity - запрещает назначать под на ноды, где есть поды попадающие под условия
 
 
-У affinity  есть 
-preferredDuringSchedulingIgnoredDuringExecution
-requiredDuringSchedulingIgnoredDuringExecution
+У affinity  есть два варианта воздействия preferredDuringSchedulingIgnoredDuringExecution  и requiredDuringSchedulingIgnoredDuringExecution. Как видно в обоих случаях  affinity игнорируется, если под уже запущен, как вариант решения удалять поды, которые не попадают под affinity или сделать drain node
 
 ### Разберемся на примере
 
