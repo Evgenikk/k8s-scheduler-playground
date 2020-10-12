@@ -1,5 +1,3 @@
-В этой статье постараюсь на базовом уровне пояснить как работают taints и tolerations в kubernetes. 
-
 
 ### Taints and tolerations
 
